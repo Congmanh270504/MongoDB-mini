@@ -6,12 +6,19 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
-model todo{
-  id        String @id @default(uuid()) @map("_id")
-  title     String?
-  completed Boolean @default(false)
+
+model todo {
+  id        String   @id @default(uuid()) @map("_id")
+  title     String?  @unique
+  isCompleted Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@unique([title])
+}
+model student{
+  id        String   @id @default(uuid()) @map("_id")
+  name     String?  @unique
+  age       Int  @default(18)
+  point       Float  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt 
 }
