@@ -17,7 +17,7 @@ const DeleteManyToDo = ({ data }: { data: props }) => {
         {data.map((todo: todoType) => (
           <Input key={todo.id} type="hidden" name="inputId" value={todo.id} />
         ))}
-        <Button type="submit" text="Delete Selected" />
+        <Button type="submit" text="Delete Selected" actionButton />
       </Form>
     </div>
   );

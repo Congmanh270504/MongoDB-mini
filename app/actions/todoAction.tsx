@@ -59,20 +59,30 @@ export async function edit(formData: FormData) {
   revalidatePath("/");
 }
 export async function editStudent(formData: FormData) {
-  const name = formData.get("name") as string;
-  const age = parseInt(formData.get("age") as string);
-  const point = parseFloat(formData.get("point") as string);
+  const name = formData.get("name") as string | null;
+  const age = formData.get("age") as string | null;
+  const point = formData.get("point") as string | null;
   const inputID = formData.get("inputId") as string;
+
+  const updateData: { name?: string; age?: number; point?: number } = {};
+  if (!name && !age && !point) return;
+  if (name) {
+    updateData.name = name;
+  }
+  if (age) {
+    updateData.age = parseInt(age);
+  }
+  if (point) {
+    updateData.point = parseFloat(point);
+  }
+
   await prisma.student.update({
     where: {
       id: inputID,
     },
-    data: {
-      name: name,
-      age: age,
-      point: point,
-    },
+    data: updateData,
   });
+
   revalidatePath("/student");
 }
 export async function deleteToDo(formData: FormData) {
@@ -96,6 +106,17 @@ export async function deleteStudent(formData: FormData) {
 export async function deleteManyToDo(formData: FormData) {
   const inputIds = formData.getAll("inputId") as string[];
   await prisma.todo.deleteMany({
+    where: {
+      id: {
+        in: inputIds,
+      },
+    },
+  });
+  revalidatePath("/");
+}
+export async function deleteManyStudent(formData: FormData) {
+  const inputIds = formData.getAll("inputId") as string[];
+  await prisma.student.deleteMany({
     where: {
       id: {
         in: inputIds,

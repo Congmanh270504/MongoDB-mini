@@ -6,7 +6,7 @@ import DeleteStudent from "@/components/shared/DeleteStudent";
 
 const Student = ({ student }: { student: studentType }) => {
   return (
-    <div className="w-full flex items-center justify-between bg-white py-3 px-20 rounded-2xl shadow-dark-lg p-4 ">
+    <div className="w-full flex items-center justify-between bg-white py-3 px-20 rounded-2xl shadow-dark-lg p-4">
       <ChangeStudent student={student} />
       <span className="text-center font-bold capitalize flex-1">
         {student.name}

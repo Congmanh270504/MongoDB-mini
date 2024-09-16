@@ -14,7 +14,7 @@ const Todo = ({ todo }: { todo: todoType }) => {
       style={todoStyle}
     >
       <ChangeToDo todo={todo} />
-      <span className="text-center font-bold uppercase">{todo.title}</span>
+      <span className="text-center font-bold ">{todo.title}</span>
       <div className="flex items-center gap-5">
         <EditToDo todo={todo} />
         <DeleteToDo todo={todo} />
