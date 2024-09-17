@@ -1,47 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
-import {
-	File,
-	Home,
-	LineChart,
-	ListFilter,
-	MoreHorizontal,
-	Package,
-	Package2,
-	PanelLeft,
-	PlusCircle,
-	Search,
-	Settings,
-	ShoppingCart,
-	Users2,
-} from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import {
-	DropdownMenu,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from "@/components/ui/table";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { prisma } from "@/utils/prisma";
 import AddStudentDialog from "@/components/shared/AddStudentDialog";
 import StudentTable from "@/components/shared/StudentTable";
