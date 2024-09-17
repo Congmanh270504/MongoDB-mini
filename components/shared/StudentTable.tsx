@@ -90,7 +90,15 @@ const StudentTable = ({ data }: { data: props }) => {
 						<TableCell>{student.age}</TableCell>
 						<TableCell className="hidden md:table-cell">{student.point}</TableCell>
 						<TableCell className="hidden md:table-cell">
-							{student.createdAt.toLocaleDateString()}
+							{new Date(student.createdAt).toLocaleString("en-GB", {
+								day: "2-digit",
+								month: "2-digit",
+								year: "numeric",
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+								hour12: true,
+							})}
 						</TableCell>
 						<TableCell className="text-right">
 							<DropdownMenu>
