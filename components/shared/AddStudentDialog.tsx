@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogClose,
@@ -10,7 +10,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/ui/input";
 import { PlusCircle } from "lucide-react";
 import React, { useState } from "react";
 import { createStudent } from "@/app/actions/studentAction";
@@ -25,7 +25,7 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "../ui/Form";
+} from "../ui/form";
 
 const formSchema = z.object({
 	name: z.string().min(2).max(50),

@@ -7,14 +7,15 @@ interface DialogItemProps {
 	triggerChildren: React.ReactNode;
 	children: React.ReactNode;
 	onSelect?: () => void;
+	open?: boolean;
 	onOpenChange?: (open: boolean) => void;
 	[key: string]: any;
 }
 
 const DialogItem = React.forwardRef<HTMLDivElement, DialogItemProps>((props, forwardedRef) => {
-	const { triggerChildren, children, onSelect, onOpenChange, ...itemProps } = props;
+	const { triggerChildren, children, onSelect, open, onOpenChange, ...itemProps } = props;
 	return (
-		<Dialog onOpenChange={onOpenChange}>
+		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogTrigger asChild>
 				<DropdownMenuItem
 					{...itemProps}

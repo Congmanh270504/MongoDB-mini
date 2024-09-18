@@ -1,6 +1,6 @@
 import { MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -26,6 +26,7 @@ type props = {
 	age: number;
 	point: number;
 	createdAt: Date;
+	updatedAt: Date;
 }[];
 
 const StudentTable = ({ data }: { data: props }) => {
@@ -40,6 +41,7 @@ const StudentTable = ({ data }: { data: props }) => {
 					<TableHead>Age</TableHead>
 					<TableHead className="hidden md:table-cell">Point</TableHead>
 					<TableHead className="hidden md:table-cell">Created at</TableHead>
+					<TableHead className="hidden md:table-cell">Updated at</TableHead>
 					<TableHead>
 						<span className="sr-only">Actions</span>
 					</TableHead>
@@ -66,6 +68,17 @@ const StudentTable = ({ data }: { data: props }) => {
 						<TableCell className="hidden md:table-cell">{student.point}</TableCell>
 						<TableCell className="hidden md:table-cell">
 							{new Date(student.createdAt).toLocaleString("en-GB", {
+								day: "2-digit",
+								month: "2-digit",
+								year: "numeric",
+								hour: "2-digit",
+								minute: "2-digit",
+								second: "2-digit",
+								hour12: true,
+							})}
+						</TableCell>
+						<TableCell className="hidden md:table-cell">
+							{new Date(student.updatedAt).toLocaleString("en-GB", {
 								day: "2-digit",
 								month: "2-digit",
 								year: "numeric",
