@@ -1,6 +1,6 @@
 import { MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import DeleteStudentDialog from "./DeleteStudentDialog";
+import EditStudentDialog from "./EditStudentDialog";
 
 type props = {
 	id: string;
@@ -84,7 +85,7 @@ const StudentTable = ({ data }: { data: props }) => {
 								</DropdownMenuTrigger>
 								<DropdownMenuContent align="end">
 									<DropdownMenuLabel>Actions</DropdownMenuLabel>
-									<DropdownMenuItem>Edit</DropdownMenuItem>
+									<EditStudentDialog student={student} />
 									<DeleteStudentDialog student={student} />
 								</DropdownMenuContent>
 							</DropdownMenu>

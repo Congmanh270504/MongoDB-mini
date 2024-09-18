@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { editStudent } from "@/app/actions/todoAction";
-import Form from "@/components/ui/Form";
+import Form from "@/components/ui/FormAction";
 import Input from "@/components/ui/InputAction";
 import Button from "@/components/ui/ButtonAction";
 import { studentType } from "@/types/todoType";

@@ -114,14 +114,4 @@ export async function deleteAllToDo(formData: FormData) {
 	});
 	revalidatePath("/");
 }
-export async function deleteManyStudent(formData: FormData) {
-	const inputIds = formData.getAll("inputId") as string[];
-	await prisma.student.deleteMany({
-		where: {
-			id: {
-				in: inputIds,
-			},
-		},
-	});
-	revalidatePath("/");
-}
+

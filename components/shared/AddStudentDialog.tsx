@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
 	Dialog,
 	DialogClose,
@@ -10,8 +10,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/Input";
 import { PlusCircle } from "lucide-react";
 import React, { useState } from "react";
 import { createStudent } from "@/app/actions/studentAction";
@@ -26,7 +25,7 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "../ui/form";
+} from "../ui/Form";
 
 const formSchema = z.object({
 	name: z.string().min(2).max(50),
@@ -36,7 +35,6 @@ const formSchema = z.object({
 
 const AddStudentDialog = () => {
 	const [open, setOpen] = useState(false);
-
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
