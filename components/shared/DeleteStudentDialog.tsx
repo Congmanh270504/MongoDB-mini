@@ -24,9 +24,9 @@ const DeleteStudentDialog = ({ student }: { student: studentType }) => {
 					</DialogDescription>
 				</DialogHeader>
 				<div>
-					<p>Student Name: {student.name}</p>
-					<p>Student Age: {student.age}</p>
-					<p>Student Point: {student.point}</p>
+					<p>Student ame: {student.name}</p>
+					<p>Student age: {student.age}</p>
+					<p>Student point: {student.point}</p>
 				</div>
 				<DialogFooter>
 					<DialogClose asChild>

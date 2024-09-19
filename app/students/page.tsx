@@ -4,6 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { prisma } from "@/utils/prisma";
 import AddStudentDialog from "@/components/shared/AddStudentDialog";
@@ -18,6 +19,7 @@ async function getData() {
       age: true,
       point: true,
       createdAt: true,
+      updatedAt: true,
     },
     orderBy: {
       name: "asc",
@@ -49,9 +51,9 @@ const StudentsPage = async () => {
             </CardContent>
           </Card>
         </main>
-        <footer className="self-center">
+        <CardFooter className="self-center">
           <DeleteAllStudentDialog data={data} />
-        </footer>
+        </CardFooter>
       </div>
     </div>
   );
