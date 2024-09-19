@@ -23,37 +23,28 @@ export async function createStudent({
 }
 
 export async function editStudent({
-  name,
-  age,
-  point,
-  inputId,
+	inputId,
+	name,
+	age,
+	point,
 }: {
-  name?: string;
-  age?: string;
-  point?: string;
-  inputId: string;
+	name: string;
+	age: number;
+	point: number;
+	inputId: string;
 }) {
-  const updateData: { name?: string; age?: number; point?: number } = {};
-  if (!name && !age && !point) return;
-  if (name) {
-    updateData.name = name;
-  }
-  if (age) {
-    updateData.age = parseInt(age);
-  }
-  if (point) {
-    updateData.point = parseFloat(point);
-  }
-
-  await prisma.student.update({
-    where: {
-      id: inputId,
-    },
-    data: updateData,
-  });
-
-  revalidatePath("/students");
+	await prisma.student.update({
+		where: {
+			id: inputId,
+		},
+		data: {
+			name: name,
+			age: age,
+			point: point,
+		},
+	});
 }
+
 
 export async function deleteStudent(formData: FormData) {
   const inputId = formData.get("inputId") as string;

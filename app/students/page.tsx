@@ -9,7 +9,6 @@ import { prisma } from "@/utils/prisma";
 import AddStudentDialog from "@/components/shared/AddStudentDialog";
 import StudentTable from "@/components/shared/StudentTable";
 import DeleteAllStudentDialog from "@/components/shared/DeleteAllStudentDialog";
-import { Button } from "@/components/ui/Button";
 
 async function getData() {
   const data = await prisma.student.findMany({
@@ -50,10 +49,8 @@ const StudentsPage = async () => {
             </CardContent>
           </Card>
         </main>
-        <footer>
-          <Button>
-            <DeleteAllStudentDialog data={data} />
-          </Button>
+        <footer className="self-center">
+          <DeleteAllStudentDialog data={data} />
         </footer>
       </div>
     </div>

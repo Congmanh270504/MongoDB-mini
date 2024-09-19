@@ -20,40 +20,36 @@ import DialogItem from "../ui/DialogItem";
 import { editStudent } from "@/app/actions/studentAction";
 import { studentType } from "@/types/studentType";
 import { Input } from "@/components/ui/Input";
-import {  z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 const formSchema = z.object({
+  inputId: z.string(),
   name: z.string().min(2).max(50),
   age: z.coerce.number().min(5).max(100),
   point: z.coerce.number().min(0).max(10),
 });
 
 const EditStudentDialog = ({ student }: { student: studentType }) => {
+  const [open, setOpen] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      inputId: student.id,
       name: student.name || "",
-      age: student.age || undefined,
-      point: student.point || undefined,
+      age: student.age,
+      point: student.point,
     },
   });
 
-  const onSubmit = (data: { name: string; age: number; point: number }) => {
-    const formattedData = {
-      ...data,
-      inputId: student.id,
-    };
-    editStudent({
-      ...formattedData,
-      age: String(formattedData.age),
-      point: String(formattedData.point),
-    });
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    editStudent(values);
+    setOpen(false);
   };
 
   return (
-    <DialogItem triggerChildren={<span className="text-red-500">Edit</span>}>
+    <DialogItem triggerChildren={"Edit"} open={open} onOpenChange={setOpen}>
       <Form {...form}>
         <DialogHeader>
           <DialogTitle>Edit this student</DialogTitle>
