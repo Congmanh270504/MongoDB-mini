@@ -1,4 +1,6 @@
 "use client";
+import { useToast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 import { Button } from "@/components/ui/Button";
 import {
   DialogClose,
@@ -33,6 +35,8 @@ const formSchema = z.object({
 
 const EditStudentDialog = ({ student }: { student: studentType }) => {
   const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,6 +49,10 @@ const EditStudentDialog = ({ student }: { student: studentType }) => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     editStudent(values);
+    toast({
+      title: "Success!",
+      description: "The student has been updated successfully.",
+    });
     setOpen(false);
   };
 

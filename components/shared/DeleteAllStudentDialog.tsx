@@ -1,5 +1,5 @@
-"use client"; // Ensure this component is rendered on the client side
-
+"use client";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/Button";
 import {
   Dialog,
@@ -11,18 +11,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import React from "react";
+import React, { useState } from "react";
 import Form from "../ui/FormAction";
 import { deleteManyStudent } from "@/app/actions/studentAction";
 import Input from "@/components/ui/InputAction";
 import { studentType } from "@/types/studentType";
 
 type props = studentType[];
-const handleEmptyStudent = () => {
-  alert("No student to delete.");
-};
 
 const DeleteAllStudentDialog = ({ data }: { data: props }) => {
+  const { toast } = useToast();
+  const [open, setOpen] = useState(false);
+
+  const onSubmit = () => {
+    toast({
+      title: "Success!",
+      description: "All students have been deleted successfully.",
+    });
+    setOpen(false);
+  };
   return (
     <Dialog>
       {data === null || data.length === 0 ? (
@@ -30,7 +37,7 @@ const DeleteAllStudentDialog = ({ data }: { data: props }) => {
           variant="destructive"
           size="default"
           className="h-8 gap-1 opacity-50"
-          onClick={handleEmptyStudent}
+          disabled
         >
           Delete All Students
         </Button>
@@ -43,7 +50,7 @@ const DeleteAllStudentDialog = ({ data }: { data: props }) => {
       )}
 
       <DialogContent className="sm:max-w-[425px]">
-        <Form action={deleteManyStudent}>
+        <Form action={deleteManyStudent} onSubmit={onSubmit}>
           {data.map((student: studentType) => (
             <Input
               key={student.id}
